@@ -7,10 +7,10 @@ function executeStep () {
     Green='\033[0;32m'
     Cyan='\033[0;36m'
     Color_Off='\033[0m'
-    echo "${Cyan}STEP: $2"
-    echo "${BYellow}Executing: ${Green} $1 ${Color_Off}"
+    echo -e "${Cyan}STEP: $2"
+    echo -e "${BYellow}Executing: ${Green} $1 ${Color_Off}"
     eval $1
-    echo "${BBlue}Completed: ${Green} $1 ${Color_Off}"
+    echo -e "${BBlue}Completed: ${Green} $1 ${Color_Off}"
 }
 
 
