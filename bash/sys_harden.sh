@@ -90,6 +90,9 @@ executeStep 'systemctl enable --now fail2ban.service' 'Enable Fail2Ban Service'
     executeStep 'sed -i "s/#bantime.factor/bantime.factor/" /etc/fail2ban/jail.local' 'Enable Fail2Ban Ban-time Mult Factor'
     # set ban factor to 2
     executeStep 'sed -i "s/bantime.factor = 1/bantime.factor = 2/" /etc/fail2ban/jail.local' 'Set Mult Factor to 2'
+
+    # set ban max retry to 2
+    executeStep 'sed -i "s/maxretry = 5/maxretry = 2/" /etc/fail2ban/jail.local' 'Set MAX RETRY from 5 to 2'
     
 
 # restart fail2ban service
