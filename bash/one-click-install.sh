@@ -38,7 +38,7 @@ executeStep 'sudo apt install git -y' 'Installing Git'
 
 # 6. install nvm and node 16
 executeStep 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash' 'Installing NVM'
-executeStep 'bash ~/.bashrc' 'Reset Shell'
+executeStep 'source ~/.bashrc' 'Reset Shell'
 
 executeStep 'nvm install 16' 'Installing Node 16'
 executeStep 'nvm alias default 16' 'Setting Node 16 as default'
@@ -48,6 +48,8 @@ executeStep 'nvm -v' 'Check NPM Version'
 # 7. install conda
 executeStep 'wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh' 'Downloading Miniconda'
 executeStep 'bash ~/miniconda.sh -b -p $HOME/.miniconda/' 'Installing Miniconda'
+executeStep '~/.miniconda/bin/conda init' 'Running Conda Init'
+
 executeStep 'rm -rf ~/miniconda.sh' 'Removing Miniconda Installer'
 
 # 8. install tmux ncdu screenfetch ranger htop
@@ -79,4 +81,4 @@ executeStep 'wget https://raw.githubusercontent.com/mukherjeearnab/dotfiles/main
 executeStep 'export TPROMPT=$(cat ~/bash_prompt.sh)' ''
 executeStep 'sed -i "s/PS1=${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$/$TPROMPT/" ~/.bashrc' 'Update Config'
 
-executeStep 'bash ~/.bashrc' 'Reset Shell'
+executeStep 'source ~/.bashrc' 'Reset Shell'
