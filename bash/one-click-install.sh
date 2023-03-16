@@ -13,6 +13,9 @@ function executeStep() {
     echo -e "${BBlue}Completed: ${Green} $1 ${Color_Off}"
 }
 
+# 0. run apt update
+executeStep 'sudo apt update' 'Running APT Update'
+
 # 1. install git
 executeStep 'sudo apt install git -y' 'Installing Git'
 
@@ -35,6 +38,7 @@ executeStep 'sudo apt install git -y' 'Installing Git'
 
 # 6. install nvm and node 16
 executeStep 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash' 'Installing NVM'
+executeStep 'bash ~/.bashrc' 'Reset Shell'
 
 executeStep 'nvm install 16' 'Installing Node 16'
 executeStep 'nvm alias default 16' 'Setting Node 16 as default'
@@ -74,3 +78,5 @@ executeStep 'cp ~/.bashrc ~/.bashrc.bkp' 'Backup Config'
 executeStep 'wget https://raw.githubusercontent.com/mukherjeearnab/dotfiles/main/bash/bash_prompt.sh -O ~/bash_prompt.sh'
 executeStep 'export TPROMPT=$(cat ~/bash_prompt.sh)' ''
 executeStep 'sed -i "s/PS1=${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$/$TPROMPT/" ~/.bashrc' 'Update Config'
+
+executeStep 'bash ~/.bashrc' 'Reset Shell'
