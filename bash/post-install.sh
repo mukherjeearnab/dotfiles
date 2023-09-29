@@ -15,7 +15,7 @@ function executeStep() {
 
 # Startup check
 if [ "$EUID" -eq 0 ]; then
-    echo "Please run as normal user ($USER). Don't user sudo. Exiting..."
+    echo "Please run as normal user. Don't use sudo. Exiting..."
     exit
 fi
 
