@@ -19,6 +19,9 @@ if [ "$EUID" -ne 0 ]; then
     exit
 fi
 
+# 0. Run apt update
+executeStep 'sudo apt update' 'Running APT Update'
+
 ######################
 # 1. Firewall Config #
 ######################
