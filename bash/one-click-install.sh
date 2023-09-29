@@ -13,6 +13,12 @@ function executeStep() {
     echo -e "${BBlue}Completed: ${Green} $1 ${Color_Off}"
 }
 
+# Startup check
+if [ "$EUID" -eq 0 ]; then
+    echo "Please run as normal user ($USER). Don't user sudo. Exiting..."
+    exit
+fi
+
 # 0. run apt update
 executeStep 'sudo apt update' 'Running APT Update'
 
@@ -38,8 +44,8 @@ executeStep 'sudo apt install git -y' 'Installing Git'
 
 # 6. install nvm and node 16
 executeStep 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash' 'Installing NVM'
-executeStep 'source ~/.bashrc' 'Reset Shell'
-
+executeStep 'export NVM_DIR=$HOME/.nvm' 'Loading NVM in script (1/2)'
+executeStep 'source $NVM_DIR/nvm.sh' 'Loading NVM in script (2/2)'
 executeStep 'nvm install 16' 'Installing Node 16'
 executeStep 'nvm alias default 16' 'Setting Node 16 as default'
 executeStep 'node -v' 'Check Node Version'
@@ -74,11 +80,3 @@ executeStep 'rm -rf ~/vscode.deb' 'Remove VS Code Installer'
 executeStep 'sudo apt install xrdp -y' 'Installing XRDP'
 executeStep 'sudo systemctl enable --now xrdp' 'Enabling XRDP'
 executeStep 'sudo systemctl status xrdp' 'Check XRDP Status'
-
-# 14. update PS1, shell prompt
-executeStep 'cp ~/.bashrc ~/.bashrc.bkp' 'Backup Config'
-executeStep 'wget https://raw.githubusercontent.com/mukherjeearnab/dotfiles/main/bash/bash_prompt.sh -O ~/bash_prompt.sh'
-executeStep 'export TPROMPT=$(cat ~/bash_prompt.sh)' ''
-executeStep 'sed -i "s/PS1=${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$/$TPROMPT/" ~/.bashrc' 'Update Config'
-
-executeStep 'source ~/.bashrc' 'Reset Shell'
