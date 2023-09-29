@@ -24,5 +24,5 @@ export OLD_PROMPT="PS1='\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h
 # 1. update PS1, shell prompt
 executeStep 'cp ~/.bashrc ~/.bashrc.bkp' 'Backup Config'
 executeStep 'wget https://raw.githubusercontent.com/mukherjeearnab/dotfiles/main/bash/helpers/bash_prompt.py -O ~/bash_prompt.py'
-executeStep 'python ./bash_prompt.py' 'Update bashrc Config'
+executeStep 'python3 ./bash_prompt.py' 'Update bashrc Config'
 executeStep 'rm ./bash_prompt.py' 'Cleaning...'
