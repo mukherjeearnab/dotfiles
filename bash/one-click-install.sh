@@ -69,7 +69,7 @@ executeStep 'sudo systemctl enable --now cockpit.socket' 'Enabling Cockpit'
 executeStep 'sudo apt install chromium-browser -y' 'Installing Chromium Browser'
 
 # 11. install uget
-executeStep 'sudo apt install uget -y' 'Installing uGet Downloader'
+# executeStep 'sudo apt install uget -y' 'Installing uGet Downloader'
 
 # 12. install VS Code
 executeStep 'wget https://az764295.vo.msecnd.net/stable/ee2b180d582a7f601fa6ecfdad8d9fd269ab1884/code_1.76.2-1678817801_amd64.deb -O ~/vscode.deb' 'Downloading VS Code'
