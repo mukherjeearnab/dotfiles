@@ -1,0 +1,8 @@
+[Unit]
+Description=Virtual Distributed Ethernet
+
+[Service]
+ExecStart=bash /home/arnab/Scripts/network_reset.sh
+
+[Install]
+WantedBy=multi-user.target
