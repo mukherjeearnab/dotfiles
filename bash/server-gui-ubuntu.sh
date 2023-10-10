@@ -23,7 +23,7 @@ fi
 executeStep 'sudo apt update' 'Running APT Update'
 
 # 1. Install the Slim Display Manager
-executeStep 'sudo apt install slim' 'Installing Slim Display Manager'
+executeStep 'sudo apt install slim -y' 'Installing Slim Display Manager'
 
 # 2. Install the LXDE Desktop Environment
-executeStep 'sudo apt install lxde' 'Installing LXDE Desktop Environment'
+executeStep 'sudo apt install lxde -y' 'Installing LXDE Desktop Environment'
