@@ -25,6 +25,9 @@ executeStep 'sudo apt update' 'Running APT Update'
 ######################
 # 1. Firewall Config #
 ######################
+# install ufw firewall
+executeStep 'sudo apt install ufw' 'Install Firewall'
+
 # enable ufw firewall and deny incomming traffic to all open ports
 executeStep 'ufw enable' 'Enable Firewall'
 
